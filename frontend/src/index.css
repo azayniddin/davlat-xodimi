@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Maxsus nafis O'zbekiston gerbi va bayrog'i aksentlari */
+.gov-gradient-header {
+  background: linear-gradient(135deg, #0b1e3b 0%, #0d2b56 50%, #103a71 100%);
+}
+
+.gov-badge-gold {
+  background: linear-gradient(135deg, #cba052 0%, #e2b96d 100%);
+  color: #1e1b13;
+}
+
+/* Suv stakanlari to'lish animatsiyasi */
+.water-glass {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.water-glass:hover {
+  transform: translateY(-3px) scale(1.04);
+}
+
+/* Pulse va jonli GPS signali */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.pulse-gps-active {
+  animation: pulse-ring 2s infinite;
+}
+
+/* Chiroyli skrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
