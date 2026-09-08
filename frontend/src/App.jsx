@@ -81,7 +81,7 @@ export default function App() {
       <footer className="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
         <div className="max-w-7xl mx-auto px-4">
           <p className="font-semibold text-slate-300">
-            O'zbekiston Respublikasi Davlat Xizmatini Rivojlantirish Agentligi uslubidagi tizim
+            O'zbekiston Respublikasi Sog'liqni Saqlash Agentligi
           </p>
           <p className="mt-1 text-slate-500 text-[11px]">
             © {new Date().getFullYear()} Davlat Xodimlari Davomat va Sog'lom Turmush Tarzi Axborot Tizimi. Barcha huquqlar himoyalangan.

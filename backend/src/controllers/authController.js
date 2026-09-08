@@ -36,6 +36,52 @@ export async function login(req, res) {
   }
 }
 
+export async function register(req, res) {
+  try {
+    const { fullName, phone, password, position, department } = req.body;
+
+    if (!fullName || !phone || !password) {
+      return res.status(400).json({ message: 'F.I.O, telefon raqami va parol kiritilishi shart' });
+    }
+
+    const cleanPhone = phone.trim().replace(/\s+/g, '');
+    const db = getDb();
+    const exists = db.users.find(u => u.phone.replace(/\s+/g, '') === cleanPhone);
+
+    if (exists) {
+      return res.status(400).json({ message: 'Ushbu telefon raqamli xodim allaqachon ro\'yxatdan o\'tgan' });
+    }
+
+    const passwordHash = await bcrypt.hash(password.trim(), 10);
+    const newUser = {
+      id: 'usr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+      fullName: fullName.trim(),
+      phone: cleanPhone,
+      passwordHash,
+      role: 'employee',
+      position: position?.trim() || 'Mutaxassis',
+      department: department?.trim() || 'Sog\'liqni saqlash bo\'limi',
+      avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(fullName)}`,
+      createdAt: new Date().toISOString()
+    };
+
+    db.users.push(newUser);
+    saveDb(db);
+
+    const token = generateToken(newUser);
+    const { passwordHash: _, ...safeUser } = newUser;
+
+    return res.status(201).json({
+      message: 'Muvaffaqiyatli ro\'yxatdan o\'tdingiz',
+      token,
+      user: safeUser
+    });
+  } catch (error) {
+    console.error('Register xatosi:', error);
+    return res.status(500).json({ message: 'Ro\'yxatdan o\'tishda xatolik yuz berdi' });
+  }
+}
+
 export function getMe(req, res) {
   return res.json({ user: req.user });
 }

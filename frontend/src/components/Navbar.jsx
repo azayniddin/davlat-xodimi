@@ -23,22 +23,26 @@ export default function Navbar({ user, onLogout }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Chap tomon: Logotip va Tizim nomi */}
-          <div className="flex items-center space-x-3.5">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-800 p-0.5 shadow-md flex items-center justify-center border border-blue-300/30">
-              <Shield className="w-7 h-7 text-amber-300" />
+          {/* Chap tomon: Davlat Gerbi va Tizim nomi */}
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md p-1 shadow-md flex items-center justify-center border border-amber-300/30 flex-shrink-0">
+              <img
+                src="/gerb.png"
+                alt="O'zbekiston Davlat Gerbi"
+                className="w-10 h-10 object-contain drop-shadow"
+              />
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="font-extrabold text-lg sm:text-xl tracking-wide uppercase bg-gradient-to-r from-white via-slate-100 to-amber-200 bg-clip-text text-transparent">
-                  Davlat Xodimi
+                <span className="font-extrabold text-sm sm:text-base md:text-lg tracking-wide uppercase bg-gradient-to-r from-white via-slate-100 to-amber-200 bg-clip-text text-transparent">
+                  Sog'liqni Saqlash Agentligi
                 </span>
-                <span className="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30">
-                  {user?.role === 'admin' ? 'Boshliq Paneli' : 'Xodim Portali'}
+                <span className="hidden sm:inline-block text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                  {user?.role === 'admin' ? 'Boshliq' : 'Xodim'}
                 </span>
               </div>
-              <p className="text-xs text-blue-200/80 font-medium">
-                Davomat va Sog'lom Turmush Tarzi Monitoringi
+              <p className="text-[11px] sm:text-xs text-blue-200/90 font-medium line-clamp-1">
+                O'zbekiston Respublikasi Sog'liqni Saqlash Agentligi
               </p>
             </div>
           </div>

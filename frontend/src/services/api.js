@@ -34,6 +34,10 @@ export const api = {
     method: 'POST',
     body: JSON.stringify({ phone, password })
   }),
+  register: (data) => request('/auth/register', {
+    method: 'POST',
+    body: JSON.stringify(data)
+  }),
   getMe: () => request('/auth/me'),
   updateProfile: (data) => request('/auth/profile', {
     method: 'PUT',

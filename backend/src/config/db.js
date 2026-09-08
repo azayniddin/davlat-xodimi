@@ -20,7 +20,7 @@ const initialData = {
   health: [],
   settings: {
     id: 'main',
-    organizationName: "O'zbekiston Respublikasi Davlat Idorasi",
+    organizationName: "O'zbekiston Respublikasi Sog'liqni Saqlash Agentligi",
     // Odatiy koordinata: Toshkent shahri markazi (Amir Temur xiyoboni yaqini)
     orgLat: 41.311081,
     orgLng: 69.279737,
