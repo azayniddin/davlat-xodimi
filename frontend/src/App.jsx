@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import EmployeeDashboard from './pages/EmployeeDashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import InstallPromptModal from './components/InstallPromptModal';
 import { api } from './services/api';
 
 export default function App() {
@@ -63,12 +64,18 @@ export default function App() {
   }
 
   if (!user) {
-    return <Login onLoginSuccess={handleLoginSuccess} />;
+    return (
+      <>
+        <Login onLoginSuccess={handleLoginSuccess} />
+        <InstallPromptModal />
+      </>
+    );
   }
 
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col selection:bg-amber-300 selection:text-slate-900">
       <Navbar user={user} onLogout={handleLogout} />
+      <InstallPromptModal />
       <main className="flex-1 pb-16">
         {user.role === 'admin' ? (
           <AdminDashboard user={user} />
