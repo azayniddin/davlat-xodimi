@@ -86,7 +86,7 @@ export function updateWater(req, res) {
 
 export function toggleRun200m(req, res) {
   try {
-    const { ran } = req.body;
+    const { ran, distance, durationSeconds } = req.body;
     const db = getDb();
     const today = getTodayDateString();
     let index = db.health.findIndex(h => h.userId === req.user.id && h.date === today);
@@ -100,12 +100,14 @@ export function toggleRun200m(req, res) {
 
     db.health[index].ran200m = Boolean(ran);
     db.health[index].ran200mTime = ran ? timeStr : null;
+    db.health[index].ranDistance = Number(distance) || (ran ? 200 : 0);
+    db.health[index].ranDurationSeconds = Number(durationSeconds) || 0;
     db.health[index].score = calculateHealthScore(db.health[index]);
     db.health[index].updatedAt = now.toISOString();
 
     saveDb(db);
     return res.json({
-      message: ran ? '200 metr yugurish / yurish muvaffaqiyatli qayd etildi!' : 'Yugurish bekor qilindi',
+      message: ran ? `Yugurish muvaffaqiyatli qayd etildi! (Masofa: ${db.health[index].ranDistance}m)` : 'Yugurish bekor qilindi',
       record: db.health[index]
     });
   } catch (error) {
@@ -115,7 +117,7 @@ export function toggleRun200m(req, res) {
 
 export function toggleLightExercises(req, res) {
   try {
-    const { done } = req.body;
+    const { done, durationMinutes, exercisesList } = req.body;
     const db = getDb();
     const today = getTodayDateString();
     let index = db.health.findIndex(h => h.userId === req.user.id && h.date === today);
@@ -129,12 +131,14 @@ export function toggleLightExercises(req, res) {
 
     db.health[index].lightExercises = Boolean(done);
     db.health[index].lightExercisesTime = done ? timeStr : null;
+    db.health[index].exercisesDurationMinutes = Number(durationMinutes) || (done ? 7 : 0);
+    db.health[index].exercisesList = exercisesList || [];
     db.health[index].score = calculateHealthScore(db.health[index]);
     db.health[index].updatedAt = now.toISOString();
 
     saveDb(db);
     return res.json({
-      message: done ? 'Yengil badantarbiya mashqlari muvaffaqiyatli qayd etildi!' : 'Mashqlar bekor qilindi',
+      message: done ? `Ertalabki badantarbiya mashqlari yakunlandi! (${db.health[index].exercisesDurationMinutes} daqiqa)` : 'Mashqlar bekor qilindi',
       record: db.health[index]
     });
   } catch (error) {

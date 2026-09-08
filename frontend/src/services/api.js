@@ -62,13 +62,13 @@ export const api = {
     method: 'POST',
     body: JSON.stringify({ glasses })
   }),
-  toggleRun200m: (ran) => request('/health/run200m', {
+  toggleRun200m: (data) => request('/health/run200m', {
     method: 'POST',
-    body: JSON.stringify({ ran })
+    body: JSON.stringify(typeof data === 'object' ? data : { ran: data })
   }),
-  toggleLightExercises: (done) => request('/health/light-exercises', {
+  toggleLightExercises: (data) => request('/health/light-exercises', {
     method: 'POST',
-    body: JSON.stringify({ done })
+    body: JSON.stringify(typeof data === 'object' ? data : { done: data })
   }),
   updateSportSession: (data) => request('/health/sport-session', {
     method: 'POST',

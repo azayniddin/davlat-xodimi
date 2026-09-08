@@ -85,14 +85,20 @@ export function getEmployeesOverview(req, res) {
             waterGlasses: hlth.waterGlasses,
             ran200m: hlth.ran200m,
             ran200mTime: hlth.ran200mTime,
+            ranDistance: hlth.ranDistance || (hlth.ran200m ? 200 : 0),
+            ranDurationSeconds: hlth.ranDurationSeconds || 0,
             lightExercises: hlth.lightExercises,
             lightExercisesTime: hlth.lightExercisesTime,
+            exercisesDurationMinutes: hlth.exercisesDurationMinutes || (hlth.lightExercises ? 7 : 0),
             sportSession: hlth.sportSession,
             score: hlth.score
           } : {
             waterGlasses: 0,
             ran200m: false,
+            ranDistance: 0,
+            ranDurationSeconds: 0,
             lightExercises: false,
+            exercisesDurationMinutes: 0,
             sportSession: { done: false },
             score: 0
           }

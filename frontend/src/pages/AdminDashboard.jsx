@@ -458,10 +458,15 @@ export default function AdminDashboard({ user }) {
                       {/* 200m Yugurish */}
                       <td className="py-4 px-4 whitespace-nowrap">
                         {hlth?.ran200m ? (
-                          <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700">
-                            <Check className="w-3 h-3" />
-                            <span>Bajarildi ({hlth.ran200mTime})</span>
-                          </span>
+                          <div>
+                            <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700">
+                              <Check className="w-3 h-3" />
+                              <span>{hlth.ranDistance || 200} metr</span>
+                            </span>
+                            <div className="text-[10px] text-slate-400 mt-0.5 font-mono">
+                              Vaqti: {hlth.ran200mTime || '07:30'}
+                            </div>
+                          </div>
                         ) : (
                           <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-100 text-slate-500">
                             <X className="w-3 h-3" />
@@ -473,10 +478,15 @@ export default function AdminDashboard({ user }) {
                       {/* Badantarbiya */}
                       <td className="py-4 px-4 whitespace-nowrap">
                         {hlth?.lightExercises ? (
-                          <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700">
-                            <Check className="w-3 h-3" />
-                            <span>Bajarildi ({hlth.lightExercisesTime})</span>
-                          </span>
+                          <div>
+                            <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700">
+                              <Check className="w-3 h-3" />
+                              <span>{hlth.exercisesDurationMinutes || 7} daqiqa</span>
+                            </span>
+                            <div className="text-[10px] text-slate-400 mt-0.5 font-mono">
+                              Vaqti: {hlth.lightExercisesTime || '07:45'}
+                            </div>
+                          </div>
                         ) : (
                           <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-100 text-slate-500">
                             <X className="w-3 h-3" />
