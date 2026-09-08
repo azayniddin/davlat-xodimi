@@ -73,7 +73,7 @@ export default function App() {
         {user.role === 'admin' ? (
           <AdminDashboard user={user} />
         ) : (
-          <EmployeeDashboard user={user} />
+          <EmployeeDashboard user={user} onUserUpdate={(updated) => setUser(updated)} />
         )}
       </main>
       
