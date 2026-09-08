@@ -53,7 +53,8 @@ Tizim ishga tushganda avtomatik quyidagi foydalanuvchilar bilan initsializatsiya
 - **Frontend:** React 18, Vite, Tailwind CSS, Lucide Icons, Canvas Confetti.
 - **Backend:** Node.js, Express, JWT (JSON Web Tokens), Bcrypt.js, REST API.
 - **Geolokatsiya:** W3C Geolocation API, Haversine Great-Circle Distance Algorithm.
-- **Deploy:** Frontend 👉 **Vercel**, Backend 👉 **Railway**.
+- **Backend API (Jonli):** `https://xodim.up.railway.app/api`
+- **Deploy:** Frontend 👉 **Vercel**, Backend 👉 **Railway (`https://xodim.up.railway.app`)**.
 
 ---
 
